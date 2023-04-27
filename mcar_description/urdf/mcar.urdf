@@ -1,0 +1,36 @@
+<robot name = "mcar">
+    <!--config base_footprint-->
+    <link name = "base_footprint">
+        <visual>
+            <geometry>
+                <sphere radius = "0.001"/>
+            </geometry>
+        </visual>
+    </link>
+
+<!-- add chassis-->
+
+<!--parameter
+Shape: Cylinder
+Radius :10 cm
+Height :8 cm
+Off the ground :1.5 cm-->
+
+    <link name = "base_link">
+        <visual>
+            <geometry>
+                <cylinder radius = "0.1" length = "0.08"/>
+            </geometry>
+            <origin xyz = "0 0 0" rpy = "0 0 0"/>
+            <material name = "yellow">
+                <color rgba = "0.8 0.3 0.1 0.5"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name = "base_link2base_footprint" type = "fixed">
+        <parent link = "base_footprint"/>
+        <child link = "base_link"/>
+        <origin xyz = "0 0 0.055"/>
+    </joint>
+</robot>
