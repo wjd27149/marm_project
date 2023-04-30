@@ -1,3 +1,10 @@
+<!--origin 设置偏移量与倾斜弧度
+
+属性1: xyz=x偏移 y便宜 z偏移
+
+属性2: rpy=x翻滚 y俯仰 z偏航 (单位是弧度)
+
+-->
 <robot name = "mcar">
     <!--config base_footprint-->
     <link name = "base_footprint">
@@ -33,4 +40,112 @@ Off the ground :1.5 cm-->
         <child link = "base_link"/>
         <origin xyz = "0 0 0.055"/>
     </joint>
+
+<!-- Add driving wheel -->
+<!--
+The driving wheels are tipped cylinders
+parameter
+Radius: 3.25cm
+Width: 1.5cm
+Color: Black
+Joint setting:
+x = 0
+y = radius of chassis + width of tire / 2
+z = ground spacing + chassis length / 2-tire radius = 1.5 + 4-3.25 = 2.25(cm)
+axis = 0 1 0
+-->
+
+    <link name = "left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius = "0.0325" length = "0.015"/>
+            </geometry>
+            <origin xyz = "0 0 0" rpy = "1.5705 0 0"/>
+            <material name = "black">
+                <color rgba = "0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name = "left_wheel2base_link" type = "continuous">
+        <parent link = "base_link"/>
+        <child link = "left_wheel"/>
+        <origin xyz = "0 0.1 -0.0225"/>
+        <axis xyz = "0 1 0"/>
+    </joint>
+
+        <link name="right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.0325" length="0.015" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.5705 0  0" />
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 1.0" />
+            </material>
+        </visual>
+
+    </link>
+
+    <joint name="right_wheel2base_link" type="continuous">
+        <parent link="base_link" />
+        <child link="right_wheel" />
+        <origin xyz="0 -0.1 -0.0225" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+<!-- Add universal wheel (support wheel) -->
+<!--
+parameter
+Shape: Sphere
+Radius: 0.75cm
+Color: Black
+
+Joint setting:
+x = Custom (chassis radius - cardan wheel radius) = 0.1-0.0075 = 0.0925(cm)
+y = 0
+z = chassis length / 2 + ground spacing / 2 = 0.08/2 + 0.015/2 = 0.0475
+axis= 1 1 1
+
+-->
+    <link name="front_wheel">
+        <visual>
+            <geometry>
+                <sphere radius="0.0075" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 1.0" />
+            </material>
+        </visual>
+    </link>
+
+    <joint name="front_wheel2base_link" type="continuous">
+        <parent link="base_link" />
+        <child link="front_wheel" />
+        <origin xyz="0.0925 0 -0.0475" />
+        <axis xyz="1 1 1" />
+    </joint>
+
+    <link name="back_wheel">
+        <visual>
+            <geometry>
+                <sphere radius="0.0075" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 1.0" />
+            </material>
+        </visual>
+    </link>
+
+    <joint name="back_wheel2base_link" type="continuous">
+        <parent link="base_link" />
+        <child link="back_wheel" />
+        <origin xyz="-0.0925 0 -0.0475" />
+        <axis xyz="1 1 1" />
+    </joint>
+
+
+
 </robot>
