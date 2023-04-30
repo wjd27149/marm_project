@@ -1,0 +1,7 @@
+<robot name = "car_camera_laser" xmlns:xacro = "http://wiki.ros.org/xacro">
+    <!-- as a base_link mcar.xacro should be put in 1st place-->
+    <xacro:include filename = "mcar.xacro"/>
+
+    <xacro:include filename = "camera.xacro"/>
+    <xacro:include filename = "laser.xacro"/>
+</robot>

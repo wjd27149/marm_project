@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/liuyihan/realsense_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/opt/ros/noetic/share/liuyihan/桌面/librealsense/include/**",
+        "/home/liuyihan/realsense_ws/src/realsense-ros/realsense2_camera/include/**",
+        "/home/liuyihan/catkin_ws/src/ros_test/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
